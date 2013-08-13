@@ -1,0 +1,65 @@
+<% provide(:title, 'Profile: '+@post.title) %>
+<ul>
+		<li><%= link_to "Home",    root_path %></li>
+		<li><%= link_to "About",    about_path %></li>
+		<li><%= link_to "Contact",    contact_path %></li>
+		<li><%= link_to "Help",    help_path %></li>
+                <% if signed_in? %>
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+		<% else %>
+                <li><%= link_to "Sign in", signin_path %></li>
+                <% end %>			
+		</ul>		
+	</div>			
+</div>	
+
+
+<div id="main">		
+			<div class="box">
+				
+				<h1><span class="gray"><%= @post.title %></span></h1>
+		<%= @post.content %><br /><br />
+<% if signed_in? && current_user.admin==true && @user.admin==false %>
+    | <%= link_to "delete", @post, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>		
+Topic- <%= @post.topic %><br /><br />
+Posted By- <%= @user.name %>
+			</div>	
+                       <div class="box">
+<h1>Give <span class="gray">Comments</span></h1>
+
+
+
+<%= form_for(@comment) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+
+    <%= f.hidden_field :post_id %>
+    <%= f.hidden_field :name, :value => current_user.name %>
+    <%= f.text_area :content, placeholder: "Compose new comment..." %>
+    
+    
+<br />
+<br />
+<br />
+  <%= f.submit "Comment" %>
+<% end %>
+
+
+
+                       </div>	
+<div class="box">
+
+<% if @post.comments.any? %>
+      <h3>Comments (<%= @post.comments.count %>)</h3>
+<ul class="sidemenu">
+        <%= render :partial => 'comment', :collection => @post.comments %>
+</ul>
+    <% end %>
+
+                       </div>		
+		</div>
+             <%= render 'sidebar' %>
+	<br />

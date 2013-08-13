@@ -1,0 +1,92 @@
+<% provide(:title, 'Home Page') %>
+<% if signed_in? %>
+<ul>
+		<li id="current"><%= link_to "Home",    root_path %></li>
+		<li><%= link_to "About",    about_path %></li>
+		<li><%= link_to "Contact",    contact_path %></li>
+		<li><%= link_to "Help",    help_path %></li>
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>	
+		</ul>		
+	</div>			
+</div>		
+<div id="main">
+
+<div class="box">
+
+<section>
+        <%= render 'shared/user_info' %>
+      </section>
+      <section>
+        <%= render 'shared/post_form' %>
+      </section>
+
+</div>
+
+</div>
+<%= render 'sidebar' %>
+	<br />
+<% else %>
+<ul>
+		<li id="current"><%= link_to "Home",    root_path %></li>
+		<li><%= link_to "About",    about_path %></li>
+		<li><%= link_to "Contact",    contact_path %></li>
+		<li><%= link_to "Help",    help_path %></li>
+                <li><%= link_to "Sign In",    signin_path %></li>	
+		</ul>		
+	</div>			
+</div>
+<div id="main">
+				
+			<div class="box">
+				
+				<h1>Demo <span class="gray">Application</span></h1>
+				
+                <p><%= link_to "Sign up now!", signup_path%><br /><br />This Rails Application <strong>asifkhan</strong> is a free, W3C-compliant, CSS-based website
+                by <a href="http://www.asifkhan.com/">Asif Khan</a>.
+                It is just a demo application that is created to practice Rails more and program accordingly.
+                This site is just for demonstration purpose and has no existence in the real world whatsoever.
+                </p>
+				
+				<p class="comments">
+                                        <%= link_to "- Asif Khan",    root_path %>
+					Jul 30, 2013
+				</p>
+				
+			</div>
+			
+			<a name="SampleTags"></a>
+			<div class="box">
+				<h1>Website <span class="gray">Features</span></h1>
+				
+
+                                <h3>Demo Text and Photo</h3>
+				<p><%= link_to image_tag("firefox-gray.jpg", alt: "firefox-gray", width:"100", height:"121", class:"float-left"), 'http://rubyonrails.org/' %>
+				Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec libero. Suspendisse bibendum. 
+				Cras id urna. Morbi tincidunt, orci ac convallis aliquam, lectus turpis varius lorem, eu 
+				posuere nunc justo tempus leo. Donec mattis, purus nec placerat bibendum, dui pede condimentum 
+				odio, ac blandit ante orci ut diam. Cras fringilla magna. Phasellus suscipit, leo a pharetra 
+				condimentum, lorem tellus eleifend magna, eget fringilla velit magna id neque. Curabitur vel urna. 
+				In tristique orci porttitor ipsum. Aliquam ornare diam iaculis nibh. Proin luctus, velit pulvinar 
+				ullamcorper nonummy, mauris enim eleifend urna, congue egestas elit lectus eu est. 				
+				</p>
+
+                                <h3>Language</h3>
+				<p>Ruby 2.0.0				
+				</p>	
+                                <h3>Framework</h3>
+				<p>Rails 4.0.0				
+				</p>							
+				<h3>Database</h3>
+				<p>SQLite3			
+				</p>	
+                                
+				<br />	
+			
+			</div>	
+							
+		</div>
+             <%= render 'sidebar' %>
+	<br />
+<% end %>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= full_title(yield(:title)) %></title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= stylesheet_link_tag    "style", media: "all" %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <%= csrf_meta_tags %>
+  <%= render 'layouts/shim' %>
+</head>
+<body>
+  <!-- wrap starts here -->
+  <div id="wrap">
+    <!-- content-wrap starts here -->
+    <div id="content-wrap">	 
+      <%= render 'layouts/header' %>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>"><%= value %></div>
+      <% end %>
+      <%= yield %>
+      <div class="clear"></div>
+      <!-- content-wrap ends here -->
+    </div>	
+  </div>
+  <%= render 'layouts/footer' %>
+</body>
+</html>

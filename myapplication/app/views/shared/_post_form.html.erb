@@ -1,0 +1,14 @@
+<%= form_for(@post) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div>
+<%= f.text_field :title, placeholder: "Give a title..." %>
+<br />
+<br />
+    <%= f.text_area :content, placeholder: "Compose new post..." %>
+<br />
+<br />
+<%= f.select :topic, options_for_select(%w[HTML&CSS Ruby JavaScript Git Rails Redis jQuery]) %>
+  </div>
+<br />
+  <%= f.submit "Post" %>
+<% end %>

@@ -1,0 +1,11 @@
+<li>
+  <%= comment.content %>
+<br />
+
+by <%= comment.name %>
+<br />
+<br />
+<%= link_to 'Destroy Comment', comment,
+    :confirm => 'Are you sure?',
+    :method => :delete if signed_in? %>
+</li>

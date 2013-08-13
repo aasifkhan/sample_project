@@ -1,0 +1,36 @@
+<% provide(:title, 'Help') %>
+<ul>
+		<li><%= link_to "Home",    root_path %></li>
+		<li><%= link_to "About",    about_path %></li>
+		<li><%= link_to "Contact",    contact_path %></li>
+		<li id="current"><%= link_to "Help",    help_path %></li>
+                <% if signed_in? %>
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+		<% else %>
+                <li><%= link_to "Sign in", signin_path %></li>
+                <% end %>			
+		</ul>		
+	</div>			
+</div>	
+<div id="main">			
+			<div class="box">
+				
+				<h1>Help <span class="gray">Section</span></h1>
+				
+                <p>If you dont know what this site is, you can always contact us and ask or you can read a lot more about us.
+                </p>
+                <p>More Help features coming soon...!!!
+                </p>
+				
+				<p class="comments">
+					<%= link_to "Contact",    contact_path %> |
+					<%= link_to "About",    about_path %> | 
+					Jul 30, 2013
+				</p>
+				
+			</div>			
+		</div>
+             <%= render 'sidebar' %>
+	<br />

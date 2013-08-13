@@ -1,0 +1,55 @@
+<% provide(:title, 'About Us') %>
+<ul>
+		<li><%= link_to "Home",    root_path %></li>
+		<li id="current"><%= link_to "About",    about_path %></li>
+		<li><%= link_to "Contact",    contact_path %></li>
+		<li><%= link_to "Help",    help_path %></li>
+                <% if signed_in? %>
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+		<% else %>
+                <li><%= link_to "Sign in", signin_path %></li>
+                <% end %>			
+		</ul>		
+	</div>			
+</div>	
+<div id="main">			
+			<div class="box">
+				
+						<h1>About <span class="gray">Us</span></h1>
+
+				<p>
+				This site is dedicated to the On-going, but soon to end, pre-joining training session at Kreeti Technologies Pvt. Ltd.   
+				</p>
+				<p>
+				Starting from HTML & CSS and almost at the end of it with jQuery.                
+				</p>
+				
+			</div>
+			
+			<div class="box">
+				<h1>The <span class="gray">Contributions</span></h1>	
+						
+				<blockquote>
+                                <ul>					
+					<li>Jayanta Mondal - HTML & CSS</li>
+					<li>Suman Ghoshal - Linux</li>	
+					<li>Anuroop Aich - Ruby</li>	
+                                        <li>Ritika Agarwal - Git</li>
+					<li>Abhidip Ray - JavaScript</li>	
+                                        <li>Debalina Mukherjee - Rails</li>
+					<li>Prosenjit Saha - Rails</li>	
+                                        <li>Ramyani Ghosh - Redis</li>
+					<li>Priya Rani - jQuery</li>								
+				</ul>
+                                </blockquote>
+						
+				
+				<br />	
+			
+			</div>	
+							
+		</div>
+             <%= render 'sidebar' %>
+	<br />

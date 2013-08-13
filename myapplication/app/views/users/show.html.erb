@@ -1,0 +1,41 @@
+<% provide(:title, 'Profile: '+@user.name) %>
+<ul>
+		<li><%= link_to "Home",    root_path %></li>
+		<li><%= link_to "About",    about_path %></li>
+		<li><%= link_to "Contact",    contact_path %></li>
+		<li><%= link_to "Help",    help_path %></li>
+                <% if signed_in? %>
+                <li id="current"><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+		<% else %>
+                <li><%= link_to "Sign in", signin_path %></li>
+                <% end %>			
+		</ul>		
+	</div>			
+</div>	
+<div id="main">		
+			<div class="box">
+				
+				<h1>Your <span class="gray">Profile</span></h1>
+				
+		<%= @user.name %>
+<% if signed_in? && current_user.admin==true && @user.admin==false %>
+    | <%= link_to "delete", @user, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>		
+			</div>	
+                       <div class="box">
+
+<% if @user.posts.any? %>
+      <h3>Posts (<%= @user.posts.count %>)</h3>
+<ul class="sidemenu">
+        <%= render @posts %>
+</ul>
+
+    <% end %>
+
+                       </div>		
+		</div>
+             <%= render 'static_pages/sidebar' %>
+	<br />

@@ -1,0 +1,43 @@
+<% provide(:title, 'Post By Topic') %>
+<ul>
+		<li><%= link_to "Home",    root_path %></li>
+		<li><%= link_to "About",    about_path %></li>
+		<li><%= link_to "Contact",    contact_path %></li>
+		<li><%= link_to "Help",    help_path %></li>
+                <% if signed_in? %>
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+		<% else %>
+                <li><%= link_to "Sign in", signin_path %></li>
+                <% end %>			
+		</ul>		
+	</div>			
+</div>	
+
+
+<div id="main">		
+			<div class="box">
+				
+				<h1>Post <span class="gray">By Topic</span></h1>
+				
+<% if @postss.any? %>
+      <h3>Posts (<%= @postss.count %>)</h3>
+<ul class="sidemenu">
+       <% @postss.each do |userr| %>
+    <li>
+      <%= link_to userr.title, userr %>
+      <br />
+    <span class="grey">Posted <%= time_ago_in_words(userr.created_at) %> ago.</span>
+<br />
+<br />
+    </li>
+  <% end %>
+</ul>
+
+    <% end %>
+
+                       </div>		
+		</div>
+             <%= render 'sidebar' %>
+	<br />

@@ -1,0 +1,44 @@
+<% provide(:title, 'Sign Up') %>
+<ul>
+		<li><%= link_to "Home",    root_path %></li>
+		<li><%= link_to "About",    about_path %></li>
+		<li><%= link_to "Contact",    contact_path %></li>
+		<li><%= link_to "Help",    help_path %></li>
+                <% if signed_in? %>
+                <li><%= link_to "Profile", current_user %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                <li><%= link_to "Sign out", signout_path, method: "delete" %></li>
+		<% else %>
+                <li><%= link_to "Sign in", signin_path %></li>
+                <% end %>			
+		</ul>		
+	</div>			
+</div>	
+<div id="main">		
+			<div class="box">
+				
+				<h1>Sign <span class="gray">Up</span></h1>
+				
+                <p>FIll in the form below to sign up
+                </p>		
+		<%= form_for(@user) do |f| %>
+<%= render 'shared/error_messages', object: f.object %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :email %>
+      <%= f.text_field :email %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+<br />
+<br />
+      <%= f.submit "Create my account" %>
+    <% end %>		
+			</div>			
+		</div>
+             <%= render 'static_pages/sidebar' %>
+	<br />

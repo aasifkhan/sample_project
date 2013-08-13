@@ -1,0 +1,43 @@
+<div id="sidebar" >
+                        <h2>Search</h2>
+			<div class="searchform">
+				<form action="#">
+					<p>
+					<input name="search_query" class="textbox" type="text" />
+  					<input name="search" class="button" value="Search" type="submit" />
+					</p>
+				</form>
+			</div>
+			<h2 class="clear">Topics Menu</h2>
+
+			<ul class="sidemenu">
+				<li><%= link_to "HTML & CSS",    topic_path(:top=>"HTML&CSS") %></li>
+				<li><%= link_to "Ruby",    topic_path(:top=>"Ruby") %></li>
+				<li><%= link_to "JavaScript",    topic_path(:top=>"JavaScript") %></li>
+				<li><%= link_to "Git",    topic_path(:top=>"Git") %></li>
+				<li><%= link_to "Rails",    topic_path(:top=>"Rails") %></li>
+                                <li><%= link_to "Redis",    topic_path(:top=>"Redis") %></li>
+                                <li><%= link_to "jQuery",    topic_path(:top=>"jQuery") %></li>
+			</ul>
+
+			<h2>Members</h2>
+			    <ul class="sidemenu">
+				<% @users.each do |user| %>
+    <li>
+      <%= link_to user.name, user %>
+      
+    </li>
+  <% end %>
+			    </ul>
+
+			
+
+			<h2>Wise Words</h2>
+			<p>&quot;The happiest people are those who invested their time in others.
+			The unhappiest people are those who wonder how the world is going to
+			make them happy&quot;</p>
+
+			<p class="align-right">- John Maxwell</p>
+
+		</div>
+
